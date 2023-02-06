@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            addLink();
+            document.querySelector('form').onsubmit = () => {
+                addLink();
+                return false;
+            };
+        });
+
+        function addLink() {
+            const orgPlusRepo = document.querySelector('#repo').value;
+            const authors = document.querySelector('#skip').value;
+
+            const baseUrl = "https://github.com/search?s=created&o=desc&state=open&q=";
+            var url = baseUrl + "repo:" + orgPlusRepo + " is:pr";
+            const authorsToSkip = authors.split(",");
+
+            for (i of authorsToSkip) {
+                url += " -author:" + i;
+            }
+
+            const p = document.createElement('p');
+            p.innerHTML = "Skipping " + authorsToSkip.join(", ");
+            document.querySelector('#results').append(p);
+
+            var link = document.createElement('a');
+            var linkText = document.createTextNode(url);
+            link.setAttribute('href', url);
+            link.setAttribute('target', '_blank');
+            link.appendChild(linkText);
+            document.querySelector('#results').append(link);
+        }
+    </script>
+    <title></title>
+</head>
+
+<body>
+    <h1>Skipper</h1>
+    <form>
+        <div>
+            <label for="repo">Repo:</label>
+            <input id="repo" value="IQSS/dataverse" type="text">
+        </div>
+        <div>
+            <label for="skip">Skip:</label>
+            <textarea id="skip" name="skip" rows="4" ,
+                cols="40">donsizemore,GPortas,landreev,pdurbin,poikilotherm,qqmyers,sekmiller</textarea>
+        </div>
+        <input id="submit" type="submit" value="Generate URL">
+    </form>
+    <div id="results"> </div>
+</body>
+
+</html>
