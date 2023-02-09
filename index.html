@@ -4,16 +4,21 @@
 <head>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            addLink();
-            document.querySelector('form').onsubmit = () => {
-                addLink();
+            addLinkToPullRequests();
+            addLinkToIssues();
+            document.querySelector("#pull-requests-form").onsubmit = () => {
+                addLinkToPullRequests();
+                return false;
+            };
+            document.querySelector("#issues-form").onsubmit = () => {
+                addLinkToIssues();
                 return false;
             };
         });
 
-        function addLink() {
-            const orgPlusRepo = document.querySelector('#repo').value;
-            const authors = document.querySelector('#skip').value;
+        function addLinkToPullRequests() {
+            const orgPlusRepo = document.querySelector('#resultsForPullRequests').value;
+            const authors = document.querySelector('#skipForPullRequests').value;
 
             const baseUrl = "https://github.com/search?s=created&o=desc&state=open&q=";
             var url = baseUrl + "repo:" + orgPlusRepo + " is:pr";
@@ -25,14 +30,38 @@
 
             const p = document.createElement('p');
             p.innerHTML = "Skipping " + authorsToSkip.join(", ");
-            document.querySelector('#results').append(p);
+            document.querySelector('#resultsForPullRequests').append(p);
 
             var link = document.createElement('a');
             var linkText = document.createTextNode(url);
             link.setAttribute('href', url);
             link.setAttribute('target', '_blank');
             link.appendChild(linkText);
-            document.querySelector('#results').append(link);
+            document.querySelector('#resultsForPullRequests').append(link);
+        }
+
+        function addLinkToIssues() {
+            const orgPlusRepo = document.querySelector('#repoForIssues').value;
+            const authors = document.querySelector('#skipForIssues').value;
+
+            const baseUrl = "https://github.com/search?s=created&o=desc&state=open&q=";
+            var url = baseUrl + "repo:" + orgPlusRepo + " is:issue";
+            const authorsToSkip = authors.split(",");
+
+            for (i of authorsToSkip) {
+                url += " -author:" + i;
+            }
+
+            const p = document.createElement('p');
+            p.innerHTML = "Skipping " + authorsToSkip.join(", ");
+            document.querySelector('#resultsForIssues').append(p);
+
+            var link = document.createElement('a');
+            var linkText = document.createTextNode(url);
+            link.setAttribute('href', url);
+            link.setAttribute('target', '_blank');
+            link.appendChild(linkText);
+            document.querySelector('#resultsForIssues').append(link);
         }
     </script>
     <title></title>
@@ -40,19 +69,34 @@
 
 <body>
     <h1>Skipper</h1>
-    <form>
+    <h2>Pull Requests</h2>
+    <form id="pull-requests-form">
         <div>
-            <label for="repo">Repo:</label>
-            <input id="repo" value="IQSS/dataverse" type="text">
+            <label for="repoForPullRequests">Repo:</label>
+            <input id="repoForPullRequests" value="IQSS/dataverse" type="text">
         </div>
         <div>
-            <label for="skip">Skip:</label>
-            <textarea id="skip" name="skip" rows="4" ,
+            <label for="skipForPullRequests">Skip:</label>
+            <textarea id="skipForPullRequests" name="skip" rows="4" ,
                 cols="40">donsizemore,GPortas,landreev,pdurbin,poikilotherm,qqmyers,sekmiller</textarea>
         </div>
-        <input id="submit" type="submit" value="Generate URL">
+        <input id="submitForIssues" type="submit" value="Generate URL">
     </form>
-    <div id="results"> </div>
+    <div id="resultsForPullRequests"> </div>
+    <h2>Issues</h2>
+    <form id="issues-form">
+        <div>
+            <label for="repoForIssues">Repo:</label>
+            <input id="repoForIssues" value="IQSS/dataverse" type="text">
+        </div>
+        <div>
+            <label for="skipForIssues">Skip:</label>
+            <textarea id="skipForIssues" name="skip" rows="8" ,
+                cols="40">app/sync-by-unito,djbrooke,dlmurphy,donsizemore,eaquigley,esotiri,ferrys,GPortas,jggautier,kcondon,landreev,mercecrosas,mheppler,mreekie,oscardssmith,pameyer,pdurbin,poikilotherm,posixeleni,qqmyers,raprasad,rtreacy,sbarbosadataverse,scolapasta,sekmiller,suenjedt,TaniaSchlatter</textarea>
+        </div>
+        <input id="submitForIssues" type="submit" value="Generate URL">
+    </form>
+    <div id="resultsForIssues"> </div>
 </body>
 
 </html>
