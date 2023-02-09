@@ -1,2 +1,3 @@
-# skipper
-list open pull requests but skip the ones from your team
+# Skipper
+
+List open pull requests and issues but skip the ones from your team.
