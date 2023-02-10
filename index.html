@@ -1,41 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <script src="script.js"></script>
     <title></title>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>Skipper</h1>
     <h2>Pull Requests</h2>
-    <form id="pull-requests-form">
-        <div>
-            <label for="repoForPullRequests">Repo:</label>
-            <input id="repoForPullRequests" value="IQSS/dataverse" type="text">
-        </div>
-        <div>
-            <label for="skipForPullRequests">Skip:</label>
-            <textarea id="skipForPullRequests" name="skip" rows="4" ,
-                cols="40">donsizemore,GPortas,landreev,pdurbin,poikilotherm,qqmyers,sekmiller</textarea>
-        </div>
-        <input id="submitForIssues" type="submit" value="Generate URL">
+    <form id="form-pr">
+      <div>
+        <label for="repo-pr">Repo:</label>
+        <input id="repo-pr" type="text" />
+      </div>
+      <div>
+        <label for="skip-pr">Skip:</label>
+        <textarea id="skip-pr" name="skip" rows="4" , cols="40"></textarea>
+      </div>
+      <input id="submitForIssues" type="submit" value="Generate URL" />
     </form>
-    <div id="resultsForPullRequests"> </div>
+    <div id="results-pr"></div>
     <h2>Issues</h2>
-    <form id="issues-form">
-        <div>
-            <label for="repoForIssues">Repo:</label>
-            <input id="repoForIssues" value="IQSS/dataverse" type="text">
-        </div>
-        <div>
-            <label for="skipForIssues">Skip:</label>
-            <textarea id="skipForIssues" name="skip" rows="8" ,
-                cols="40">app/sync-by-unito,djbrooke,dlmurphy,donsizemore,eaquigley,esotiri,ferrys,GPortas,jggautier,kcondon,landreev,mercecrosas,mheppler,mreekie,oscardssmith,pameyer,pdurbin,poikilotherm,posixeleni,qqmyers,raprasad,rtreacy,sbarbosadataverse,scolapasta,sekmiller,suenjedt,TaniaSchlatter</textarea>
-        </div>
-        <input id="submitForIssues" type="submit" value="Generate URL">
+    <form id="form-issue">
+      <div>
+        <label for="repo-issue">Repo:</label>
+        <input id="repo-issue" type="text" />
+      </div>
+      <div>
+        <label for="skip-issue">Skip:</label>
+        <textarea id="skip-issue" name="skip" rows="8" , cols="40"></textarea>
+      </div>
+      <input id="submit-issue" type="submit" value="Generate URL" />
     </form>
-    <div id="resultsForIssues"> </div>
-</body>
-
+    <div id="results-issue"></div>
+  </body>
 </html>
