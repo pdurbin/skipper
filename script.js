@@ -8,10 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
     "User Role: API User,User Role: Curator,User Role: Depositor,User Role: Guest,User Role: Hackathon Participant,User Role: Superuser,User Role: Sysadmin";
   const issueFeatures =
     "Feature: API,Feature: API Guide,Feature: Accessibility,Feature: Account & User Info,Feature: Admin Guide,Feature: Analytics,Feature: Branding,Feature: Code Infrastructure,Feature: Container Guide,Feature: Controlled Vocabulary,Feature: DOI & Handle,Feature: DataTags,Feature: Dataverse General Info,Feature: Deaccession,Feature: Developer Guide,Feature: Email Dataset Contact,Feature: External Tool,Feature: File Upload & Handling,Feature: Geospatial,Feature: Guestbook,Feature: Harvesting,Feature: In Review Workflow,Feature: Indexing,Feature: Installation Guide,Feature: Installer,Feature: Internationalization,Feature: Messaging,Feature: Metadata,Feature: Metrics + Reports,Feature: Migration,Feature: My Data,Feature: Notifications,Feature: Performance & Stability,Feature: Permissions,Feature: Preservation,Feature: Provenance,Feature: Publishing & Versions,Feature: Request Access Workflow,Feature: Search/Browse,Feature: Signposting,Feature: Style Guide,Feature: Superuser Dashboard,Feature: Templates,Feature: Terms & Licensing,Feature: TwoRavens,Feature: User Guide,Feature: Widgets,Feature: WorldMap & GeoConnect";
+  const issueTypes =
+    "Type: Bug,Type: Feature,Type: Suggestion";
   addLink(repo, "pr", prAuthors);
   addLink(repo, "issue", issueAuthors);
   addLink2(repo, "roles", issueRoles);
   addLink2(repo, "features", issueFeatures);
+  addLink2(repo, "types", issueTypes);
   document.querySelector("#form-pr").onsubmit = () => {
     const authors = document.querySelector("#skip-pr").value;
     addLink(repo, "pr", authors);
@@ -30,6 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#form-features").onsubmit = () => {
     const features = document.querySelector("#skip-features").value;
     addLink2(repo, "features", features);
+    return false;
+  };
+  document.querySelector("#form-types").onsubmit = () => {
+    const types = document.querySelector("#skip-types").value;
+    addLink2(repo, "types", types);
     return false;
   };
 });
