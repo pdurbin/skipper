@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const prAuthors =
     "donsizemore,GPortas,landreev,pdurbin,poikilotherm,qqmyers,sekmiller";
   const issueAuthors =
-    "app/sync-by-unito,djbrooke,dlmurphy,donsizemore,eaquigley,esotiri,ferrys,GPortas,jggautier,kcondon,landreev,mercecrosas,mheppler,mreekie,oscardssmith,pameyer,pdurbin,poikilotherm,posixeleni,qqmyers,raprasad,rtreacy,sbarbosadataverse,scolapasta,sekmiller,suenjedt,TaniaSchlatter";
+    "app/sync-by-unito,cmbz,djbrooke,dlmurphy,donsizemore,eaquigley,esotiri,ferrys,GPortas,jggautier,kcondon,landreev,mercecrosas,mheppler,mreekie,oscardssmith,pameyer,pdurbin,poikilotherm,posixeleni,qqmyers,raprasad,rtreacy,sbarbosadataverse,scolapasta,sekmiller,suenjedt,TaniaSchlatter";
   const issueRoles =
     "User Role: API User,User Role: Curator,User Role: Depositor,User Role: Guest,User Role: Hackathon Participant,User Role: Superuser,User Role: Sysadmin";
   const issueFeatures =
