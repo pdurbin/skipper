@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const repo = "IQSS/dataverse";
   const prAuthors =
-    "donsizemore,GPortas,jp-tosca,landreev,pdurbin,poikilotherm,qqmyers,Saixel,sekmiller,stevenwinship";
+    "donsizemore,ErykKul,GPortas,jp-tosca,landreev,pdurbin,poikilotherm,qqmyers,Saixel,sekmiller,stevenwinship";
   const issueAuthors =
-    "app/sync-by-unito,cmbz,djbrooke,dlmurphy,donsizemore,eaquigley,esotiri,ferrys,GPortas,jggautier,jp-tosca,kcondon,kmika11,landreev,mercecrosas,mheppler,mreekie,oscardssmith,pameyer,pdurbin,poikilotherm,posixeleni,qqmyers,raprasad,rtreacy,Saixel,sbarbosadataverse,scolapasta,sekmiller,stevenwinship,suenjedt,TaniaSchlatter";
+    "app/sync-by-unito,cmbz,djbrooke,dlmurphy,donsizemore,eaquigley,ErykKul,esotiri,ferrys,GPortas,jggautier,jp-tosca,kcondon,kmika11,landreev,mercecrosas,mheppler,mreekie,oscardssmith,pameyer,pdurbin,poikilotherm,posixeleni,qqmyers,raprasad,rtreacy,Saixel,sbarbosadataverse,scolapasta,sekmiller,stevenwinship,suenjedt,TaniaSchlatter";
   addLink(repo, "pr", prAuthors);
   addLink(repo, "issue", issueAuthors);
   document.querySelector("#form-pr").onsubmit = () => {
