@@ -7,11 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
   addLink(repo, "pr", prAuthors);
   addLink(repo, "issue", issueAuthors);
   document.querySelector("#form-pr").onsubmit = () => {
+    const repo = document.querySelector("#repo-pr").value;
     const authors = document.querySelector("#skip-pr").value;
     addLink(repo, "pr", authors);
     return false;
   };
   document.querySelector("#form-issue").onsubmit = () => {
+    const repo = document.querySelector("#repo-issue").value;
     const authors = document.querySelector("#skip-issue").value;
     addLink(repo, "issue", authors);
     return false;
