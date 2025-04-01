@@ -4,24 +4,24 @@ const prAuthors =
 const issueAuthors =
   "app/sync-by-unito,cmbz,djbrooke,dlmurphy,donsizemore,eaquigley,ErykKul,esotiri,ferrys,GPortas,jggautier,jp-tosca,kcondon,kmika11,landreev,mercecrosas,mheppler,mreekie,oscardssmith,pameyer,pdurbin,poikilotherm,posixeleni,qqmyers,raprasad,rtreacy,Saixel,sbarbosadataverse,scolapasta,sekmiller,stevenwinship,suenjedt,TaniaSchlatter";
 
-addLink(repo, "pr", prAuthors);
-addLink(repo, "issue", issueAuthors);
+replaceLink(repo, "pr", prAuthors);
+replaceLink(repo, "issue", issueAuthors);
 
 document.querySelector("#form-pr").onsubmit = () => {
   const repo = document.querySelector("#repo-pr").value;
   const authors = document.querySelector("#skip-pr").value;
-  addLink(repo, "pr", authors);
+  replaceLink(repo, "pr", authors);
   return false;
 };
 
 document.querySelector("#form-issue").onsubmit = () => {
   const repo = document.querySelector("#repo-issue").value;
   const authors = document.querySelector("#skip-issue").value;
-  addLink(repo, "issue", authors);
+  replaceLink(repo, "issue", authors);
   return false;
 };
 
-function addLink(repo, type, authors) {
+function replaceLink(repo, type, authors) {
   console.log(type);
   document.querySelector("#repo-" + type).value = repo;
   document.querySelector("#skip-" + type).value = authors;
@@ -33,7 +33,9 @@ function addLink(repo, type, authors) {
     url += " -author:" + i;
   }
 
+  const div = document.createElement("div");
   const p = document.createElement("p");
+
   p.innerHTML = "Skipping " + authorsToSkip.join(", ");
   document.querySelector("#results-" + type).append(p);
 
@@ -41,6 +43,12 @@ function addLink(repo, type, authors) {
   var linkText = document.createTextNode(url);
   link.setAttribute("href", url);
   link.setAttribute("target", "_blank");
-  link.appendChild(linkText);
-  document.querySelector("#results-" + type).append(link);
+  link.append(linkText);
+
+  div.append(p);
+  div.append(link);
+
+  const results = document.querySelector("#results-" + type);
+
+  results.innerHTML = div.innerHTML;
 }
